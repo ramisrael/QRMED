@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfil Médico</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      text-align: center;
+      padding: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<h1>Información Médica</h1>
+
+<div class="card">
+  <p id="info"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+let nombre = params.get("nombre");
+let sangre = params.get("sangre");
+let alergias = params.get("alergias");
+
+document.getElementById("info").innerHTML =
+`<strong>Nombre:</strong> ${nombre} <br>
+<strong>Tipo de sangre:</strong> ${sangre} <br>
+<strong>Alergias:</strong> ${alergias}`;
+</script>
+
+</body>
+</html>

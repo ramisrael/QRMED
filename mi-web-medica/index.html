@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro Médico</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      text-align: center;
+      padding: 30px;
+    }
+    input {
+      margin: 10px;
+      padding: 10px;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #qr {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Registro Médico</h1>
+
+<input id="nombre" placeholder="Nombre completo"><br>
+<input id="tipoSangre" placeholder="Tipo de sangre"><br>
+<input id="alergias" placeholder="Alergias"><br>
+
+<button onclick="generarQR()">Generar QR</button>
+
+<div id="qr"></div>
+
+<script>
+function generarQR() {
+  let nombre = document.getElementById("nombre").value;
+  let sangre = document.getElementById("tipoSangre").value;
+  let alergias = document.getElementById("alergias").value;
+
+  // LINK QUE ABRIRÁ EL QR
+  let link = `perfil.html?nombre=${nombre}&sangre=${sangre}&alergias=${alergias}`;
+
+  // GENERADOR DE QR
+  let url = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(link);
+
+  document.getElementById("qr").innerHTML = `<img src="${url}" />`;
+}
+</script>
+
+</body>
+</html>
